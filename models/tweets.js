@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
 const tweetSchema = mongoose.Schema({
-  author: String,
-  token: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   createdOn: Date,
   content: String,
-  likes: Number,
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "users" }],
 });
 
 const Tweet = mongoose.model("tweets", tweetSchema);
